@@ -1,0 +1,35 @@
+{% extends "base_login.html" %}
+{% block sign %}
+
+  <section id="content" class="m-t-lg wrapper-md animated fadeInDown">
+    <div class="container aside-xl">
+      <a class="navbar-brand block" href="index.html"><span class="h1 font-bold">MidblueRadio</span></a>
+      <section class="m-b-lg">
+        <header class="wrapper text-center">
+          <strong>注册开启你的个性化之旅</strong>
+        </header>
+        <form action="/registersave/" method="POST">
+          <div class="form-group">
+            <input placeholder="用户名（字母或数字）" name="userName" class="form-control rounded input-lg text-center no-border">
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="密码（至少8位）" name="password" class="form-control rounded input-lg text-center no-border">
+          </div>
+          <div class="form-group">
+             <input type="password" placeholder="确认密码" name="passwordAgain" class="form-control rounded input-lg text-center no-border">
+          </div>
+
+          <button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded">
+              <i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">注册</span></button>
+          <div class="text-right m-t m-b">{% if error %}<label style="color:#FF0000">{{ error }}</label>{% endif %}</div>
+          <div class="line line-dashed"></div>
+
+          <p class="text-muted text-center"><small>已有账号?</small></p>
+          <a href="{%url 'log' %}" class="btn btn-lg btn-info btn-block btn-rounded">去登录</a>
+          <div class="text-center m-t m-b"><a href="{% url 'weiboLogin' %}"><img src="/static/images/32.png"  ></a></div>
+        </form>
+      </section>
+    </div>
+  </section>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <section class="vbox">
+        <section class="scrollable padder-lg">
+
+                <h2 class="font-thin m-b">{{area.name}}</h2>
+                <div class="row row-sm">
+                        {%if Radiolists %}
+                            {%for radio in Radiolists%}
+
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                    <div class="item">
+                                        <div class="pos-rlt">
+                                            <div class="item-overlay opacity r r-2x bg-black">
+                                                <div class="center text-center m-t-n">
+                                                    <a href="{% url 'radioPlay' %}?address={{ radio.url }}"><i class="fa fa-play-circle i-2x"></i></a>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="thumbnail" ><img src="/static/images/r{{ radio.id }}.jpg" alt="" class="r r-2x img-full"></a>
+                                        </div>
+                                        <div class="padder-v">
+                                            <a href="{% url 'radioPlay' %}?address={{ radio.url }}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis">{{ radio.name }}</a>
+                                            <a href="track-detail.html" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">Radio</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+{#                                    <a href="{% url 'displayRadio' %}?id={{ area.id }}"> {{area.name}}</a>#}
+
+                        {%endfor%}
+                {% else %}
+                            <div class="padder-v">
+                                <a href="track-detail.html" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">Sorry,there is no live_telecast_radio at present</a>
+                            </div>
+
+                {% endif %}
+
+
+                </div>
+
+
+         </section>
+        </section>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

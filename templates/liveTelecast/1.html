@@ -1,0 +1,231 @@
+{% extends "home.html" %}
+{% block content %}
+
+        <!-- /.aside -->
+
+{#          <section class="vbox">#}
+          <section class="w-f-md">
+            <section class="hbox stretch bg-black dker">
+              <!-- side content -->
+              <aside class="col-sm-5 no-padder" id="sidebar">
+                <section class="vbox animated fadeInUp">
+                  <section class="scrollable">
+
+                    <div class="m-t-n-xxs item pos-rlt">
+                      <div class="top text-right">
+{#                          小图标#}
+                        <span class="musicbar animate bg-success bg-empty inline m-r-lg m-t" style="width:25px;height:30px">
+                          <span class="bar1 a3 lter"></span>
+                          <span class="bar2 a5 lt"></span>
+                          <span class="bar3 a1 bg"></span>
+                          <span class="bar4 a4 dk"></span>
+                          <span class="bar5 a2 dker"></span>
+
+                        </span>
+                      </div>
+{#                      <div class="bottom gd bg-info wrapper-lg">#}
+{#                           <span>{{ radio.name }}</span>#}
+{#                        <span class="pull-right text-sm">101,400 <br>Followers</span>#}
+{#                        <span class="h2 font-thin">Soph Ashe</span>#}
+{##}
+{#                      </div>#}
+
+                    {% if radioBeijingProgramList %}
+                        <img class="img-full" src="/static/images/t1.jpg" alt="...">
+                        <audio controls="controls" autoplay="autoplay" style="width: 100%">
+                             <source src="{{ mmsadress }}" type="audio/mpeg">
+                        </audio>
+
+                    {% else %}
+                        <div class="MediaPlayer">
+
+                <object id="MediaPlayer" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" height="400" width="100%">
+                <param name="URL" value="{{ mmsadress }}">
+                <param name="rate" value="1">
+                <param name="balance" value="0">
+                <param name="defaultFrame" value="">
+                <param name="playCount" value="1">
+                <param name="autoStart" value="1">
+                <param name="currentMarker" value="0">
+                <param name="invokeURLs" value="-1">
+                <param name="baseURL" value="">
+                <param name="volume" value="50">
+                <param name="mute" value="0">
+                <param name="stretchToFit" value="1">
+                <param name="windowlessVideo" value="0">
+                <param name="enabled" value="-1">
+                <param name="enableContextMenu" value="0">
+                <param name="fullScreen" value="0">
+                <param name="SAMIStyle" value="">
+                <param name="SAMILang" value="">
+                <param name="SAMIFilename" value="">
+                <!--<param name="captioningID" value="">-->
+                <embed src="{{ mmsadress }}" autostart="1" type="video/x-ms-wmv" width="100%" height="400">
+                 </object>
+
+
+
+                        </div>
+                    {% endif %}
+
+
+
+
+
+{#                      <img class="img-full" src="/static/images/m43.jpg" alt="...">#}
+                    </div>
+                    <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+
+
+
+                      <li class="list-group-item collect"  radio-id="{{ radio.id }}">
+
+                      <div class="pull-left m-l">
+                          <a href="#" class="m-r-sm">{{ radio.name }}</a>
+                        </div>
+                          {% if collect %}
+                          <div class="clear text-ellipsis collects" style="position: relative;left:80%">
+                            <span class="glyphicon glyphicon-heart" style="color: #F76F12;font-size: 25px" ></span>取消收藏
+                          </div>
+                          {% else %}
+
+                          <div class="clear text-ellipsis collects" style="position: relative;left:80%" >
+                            <span class="glyphicon glyphicon-heart" style="color: rgb(224,224,224);font-size: 25px" ></span>添加收藏
+                          </div>
+
+                          {% endif %}
+                      </li>
+
+
+                      <li class="list-group-item">
+ <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="{{radio.id  }}" data-title="{{ radio.name }}" data-url="{% url 'radioPlay' %}"></div>
+            <!-- 多说评论框 end -->
+            <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+            <script type="text/javascript">
+            var duoshuoQuery = {short_name:"liveradioduoshuo"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0]
+                     || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+	       </script>
+<!-- 多说公共JS代码 end -->
+                      </li>
+                    </ul>
+                  </section>
+                </section>
+              </aside>
+              <!-- / side content -->
+                {% if radioBeijingProgramList %}
+
+              <section class="col-sm-4 no-padder bg">
+                <section class="vbox">
+                  <section class="scrollable hover">
+                    <ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
+                     <li class="list-group-item clearfix">
+
+                        <a class="clear" href="#" style="position: relative;left:45%">
+                          <span class="block text-ellipsis">{{ radio.name }}节目单</span>
+                          <small class="text-muted" style="position: relative;left:6%">{{ today }}</small>
+                        </a>
+                      </li>
+                        {% for radioBeijingProgram in radioBeijingProgramList %}
+                      <li class="list-group-item clearfix" nprogram="{{ forloop.counter  }}">
+                        <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
+                          <i class="icon-control-play text"></i>
+                          <i class="icon-control-pause text-active"></i>
+                        </a>
+                        <a href="#" class="pull-left thumb-sm m-r" style="position: absolute;left:7%" id="displaying">
+                          {{ radioBeijingProgram.play_time }}
+                        </a>
+                        <a class="clear" href="#">
+                          <span class="block text-ellipsis"  style="position: absolute;left:40%">{{ radioBeijingProgram.program }}</span>
+
+                        </a>
+                      </li>
+                        {% endfor %}
+
+                    </ul>
+                  </section>
+                </section>
+              </section>
+
+                {% else %}
+              <section class="col-sm-3 no-padder lt">
+                <section class="vbox">
+                  <section class="scrollable hover">
+                    <div class="m-t-n-xxs">
+                      <div class="item pos-rlt">
+                        <a href="{{ radio.url_playlist }}" class="item-overlay active opacity wrapper-md font-xs">
+                          <span class="block h3 font-bold text-info">Find</span>
+                          <span class="text-muted"> 节目单详情</span>
+                          <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                        </a>
+                        <a href="#">
+                          <img class="img-full" src="/static/images/m40.jpg" alt="...">
+                        </a>
+                      </div>
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs text-right">
+                          <span class="block h3 font-bold text-warning text-u-c">Listen</span>
+                          <span class="text-muted">Find the peace in your heart</span>
+                          <span class="bottom wrapper-md block"><i class="icon-arrow-right i-lg pull-left"></i> -</span>
+                        </a>
+                        <a href="#">
+                          <img class="img-full" src="/static/images/m41.jpg" alt="...">
+                        </a>
+                      </div>
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                          <span class="block h3 font-bold text-success text-u-c">Share</span>
+                          <span class="text-muted">Share the good songs with your loves</span>
+                          <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                        </a>
+                        <a href="#">
+                          <img class="img-full" src="/static/images/m42.jpg" alt="...">
+                        </a>
+                      </div>
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs text-right">
+                          <span class="block h3 font-bold text-white text-u-c">2014</span>
+                          <span class="text-muted">Find, Listen & Share</span>
+                          <span class="bottom wrapper-md block"><i class="icon-arrow-right i-lg pull-left"></i> -</span>
+                        </a>
+                        <a href="#">
+                          <img class="img-full" src="/static/images/m44.jpg" alt="...">
+                        </a>
+                      </div>
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                          <span class="block h3 font-bold text-danger-lter text-u-c">Top10</span>
+                          <span class="text-muted">Selected songs</span>
+                          <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                        </a>
+                        <a href="#">
+                          <img class="img-full" src="/static/images/m45.jpg" alt="...">
+                        </a>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+              </section>
+                {% endif %}
+
+            </section>
+          </section>
+{#          <footer class="footer bg-success dker">#}
+{#              <div class="jp-type-playlist">#}
+{##}
+{#               <span class="radioname" style="position: absolute;left: 30%;line-height: 80px;font-size: 20px;letter-spacing: 20px">{{ radio.name }}</span>#}
+{##}
+{#                  </div>#}
+{#          </footer>#}
+{#        </section>#}
+
+
+{% endblock %}
+{% block script%}<script src="/static/js/collect.js"></script>{%endblock%}

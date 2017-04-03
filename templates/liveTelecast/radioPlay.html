@@ -1,0 +1,111 @@
+{% extends "home.html" %}
+{% block script%}<script src="/static/js/collect.js"></script>{%endblock%}
+
+{% block content %}
+	<table id="program-table">
+		<tr>
+			<th>
+			{{ radio.name }}
+			</th>
+		</tr>
+		<tr>
+            <td>
+                <object id="MediaPlayer" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" height="460" width="530">
+                <param name="URL" value="{{ mmsadress }}">
+                <param name="rate" value="1">
+                <param name="balance" value="0">
+                <param name="defaultFrame" value="">
+                <param name="playCount" value="1">
+                <param name="autoStart" value="1">
+                <param name="currentMarker" value="0">
+                <param name="invokeURLs" value="-1">
+                <param name="baseURL" value="">
+                <param name="volume" value="50">
+                <param name="mute" value="0">
+                <param name="stretchToFit" value="1">
+                <param name="windowlessVideo" value="0">
+                <param name="enabled" value="-1">
+                <param name="enableContextMenu" value="0">
+                <param name="fullScreen" value="0">
+                <param name="SAMIStyle" value="">
+                <param name="SAMILang" value="">
+                <param name="SAMIFilename" value="">
+                <!--<param name="captioningID" value="">-->
+                <embed src="{{ mmsadress }}  " autostart="1" type="video/x-ms-wmv" width="530" height="460">
+            </object>
+
+
+            </td>
+        <!--节目收藏-->
+
+        <div id="collect" radio-id="{{ radio.id }}" >
+            {% if collect %}
+             <span class='glyphicon glyphicon-heart' style='color: #F76F12;font-size: 40px' ></span>取消收藏
+            {% else %}
+             <span class="glyphicon glyphicon-heart" style="color: rgb(224,224,224);font-size: 40px" ></span>添加收藏
+            {% endif %}
+        </div>
+
+
+
+        <td></td>
+            <!--节目显示-->
+
+
+
+            <td>
+
+                    {% if radioBeijingProgramList %}
+                        <table border="1">
+                        <tr><th>节目单显示</th></tr>
+                            {% for radioBeijingProgram in radioBeijingProgramList %}
+                                <tr>
+                                    <td class="program_play_time1">{{ radioBeijingProgram.play_time }}</td>
+
+
+                                     <td class="program_play_time" style="border-color: #000000;" data-time="{{ radioBeijingProgram.play_time }}">{{ radioBeijingProgram.program }}</td>
+
+
+                                </tr>
+
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <a href="{{ radio.url_playlist }}">节目单详情</a>
+
+                    {% endif %}
+
+
+
+
+            </td>
+        </tr>
+     <tr>
+            <td>
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="{{radio.id  }}" data-title="{{ radio.name }}" data-url="{% url 'radioPlay' %}"></div>
+            <!-- 多说评论框 end -->
+            <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+            <script type="text/javascript">
+            var duoshuoQuery = {short_name:"liveradioduoshuo"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0]
+                     || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+	       </script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+            </td>
+        </tr>
+
+		
+	</table>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base_login.html" %}
+{% block css %}
+    <style>
+        select {
+            BACKGROUND-COLOR: #FFFFF0;
+            color: #003366;
+            MARGIN-LEFT: 3px;
+            width:80px;
+        }
+    </style>
+{% endblock %}
+
+{% block sign %}
+
+    <section id="content" class="m-t-lg wrapper-md animated fadeInDown">
+        <div class="container aside-xl">
+            <a class="navbar-brand block" href="index.html"><span class="h1 font-bold">MidblueRadio</span></a>
+            <section class="m-b-lg">
+                <header class="wrapper text-center">
+                    <strong>注册开启你的个性化之旅：口味测试</strong>
+                </header>
+                <form  action="/tasteTest/" method="post">
+                <div class="row m-t">
+                    <div class="col-md-12">
+                        <h4 class="m-t-xs">性别</h4>
+                        <div class="m-b-sm">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-sm btn-dark">
+                                    <input type="radio" name="sex" value="male"><i
+                                        class="fa fa-check text-active"></i>男</label>
+                                <label class="btn btn-sm btn-success">
+                                    <input type="radio" name="sex" value="female"><i
+                                        class="fa fa-check text-active"></i>女</label>
+                                <label class="btn btn-sm btn-primary">
+                                    <input type="radio" name="sex" value="other"><i class="fa fa-check text-active"></i>其他
+                                </label>
+                            </div>
+                        </div>
+
+                        <h4 class="m-t-xs">出生日期</h4>
+                        <div class="m-b-sm">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label>
+                                    <select class="btn btn-default" name="year" id="year"
+                                            onfocus="years('year',new Date().getFullYear())"
+                                            onchange="change_date()"></select>
+                                </label>
+                                <label>
+                                    <select class="btn btn-default" name="month" id="month" onfocus="months()"
+                                            onchange="change_date()"></select>
+                                </label>
+                                <label>
+                                    <select class="btn btn-default" name="date" id="date"
+                                            onfocus="change_date()"></select>
+                                </label>
+                            </div>
+                        </div>
+
+                        <h4 class="m-t-xs">职业/单选</h4>
+                        <div class="m-b-sm">
+                            <div class="btn-group" data-toggle="buttons">
+                                {% for job in liveJob_list %}
+                                    <label class="btn btn-sm btn-warning">
+                                        <input type="radio" name="job" value="{{ job.id }}"><i
+                                            class="fa fa-check text-active"></i>{{ job.name }}</label>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <h4 class="m-t-xs">喜欢的节目类型/多选</h4>
+                        <div class="m-b-sm">
+                            <div class="btn-group" data-toggle="buttons">
+                                {% for type in liveType_list %}
+                                    <label class="btn btn-sm btn-primary">
+                                        <input type="checkbox" name="type" value="{{ type.id }}"><i
+                                            class="fa fa-check text-active"></i>{{ type.name }}</label>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="line line-dashed"></div>
+                        <button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded">
+                        <i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">完成注册</span></button>
+                        <div class="text-right m-t m-b">{% if error %}<label style="color:#FF0000">{{ error }}</label>{% endif %}</div>
+
+                    </div>
+
+
+
+                </div>
+                </form>
+            </section>
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>program search</title>
+		 <meta charset="utf-8">
+		
+       <script>
+		    //window.onload=function (){
+			//var button=document.getElementById("addButton");
+			//button.onlick=handleButtonClick;
+			//}
+		/////function handleButtonClick(){
+			//var key_words=document.getElementById("key_search").value;
+		//}
+           
+        </script>
+    </head>
+    <body>
+        <h1>电台节目查询系统</h1>
+		<div>
+			{% if error %}
+				<h2 class="post-title">NOT Found</a></h2>
+			{% else %}
+			{% for post in post_list %}
+					<h2>{{post.title}}</h2>
+			{% endfor %}
+            {% endif %}
+		</div>
+        <strong>{{ current_time }}</strong>
+    </body>
+</html>

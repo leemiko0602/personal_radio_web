@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Django default" uuid="7b097d0a-6c83-4b07-aae2-1786eea1a12f">
+      <user-name>root</user-name>
+      <user-password>dfd8dfcbdfc2dfd9dfdbdfdedf9cdf98df99</user-password>
+      <introspection-scope>personal_radio_db:*</introspection-scope>
+      <resolve-scope>personal_radio_db:*</resolve-scope>
+    </data-source>
+    <data-source name="Django default2" uuid="c8ffa67a-a63a-4dd0-9ecd-c426cc41f368">
+      <user-name>root</user-name>
+      <user-password>dfdfdfc4dfc3dfdbdfdfdfcf</user-password>
+      <introspection-scope>personal_radio_db:*</introspection-scope>
+      <resolve-scope>personal_radio_db:*</resolve-scope>
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,219 @@
+{% extends "home.html" %}
+{% block link %}
+    <link rel="stylesheet" href="/static/css/xiami.css" />
+    <link rel="stylesheet" href="/static/css/scroll.css" />
+{% endblock %}
+{% block content %}
+    <section class="vbox">
+
+    <section class="hbox stretch bg-black dker">
+              <!-- side content -->
+              <aside class="col-sm-8 no-padder" id="sidebar">
+               <audio id="audio" ></audio>
+               <div class="mainBody">
+					<div class="playHd">
+						<div class="phInner">
+							<div class="col" style="font-size: 18px;font-family:仿宋;font-weight:bold;">节目时长</div>
+							<div class="col" style="font-size: 18px;font-family:仿宋;font-weight:bold;">节目名</div>
+							<div class="col" style="font-size: 18px;font-family:仿宋;font-weight:bold;">专辑</div>
+                            <div class="col" style="font-size: 18px;font-family:仿宋;font-weight:bold;">收藏与评分</div>
+
+						</div>
+					</div>
+					<div class="playBd">
+						<div class="scrollView">
+							<!-- <div class="scroll"></div> -->
+							<ul class="songUL">
+                                {% for list in lists %}
+                                   <li class="songList">
+									<div class="songLMain">
+										<div class="start"  >
+											<em sonN="{{ forloop.counter  }}" programURL="{{ list.url }}" start-time="{{list.recommend_list.play_time  }}" play-status="none" program-id="{{list.recommend_list.program_id }}">{{ forloop.counter }}</em>
+										</div>
+										<div class="songBd">
+											<div class="col colsn" sonN="{{ forloop.counter  }}">{{ list.recommend_list.play_time }}</div>
+											<div class="col colcn">{{ list.program.block_name }}</div>
+											<div class="col">待定</div>
+
+										</div>
+
+										<div class="control">
+                                             {% ifequal list.collect 1 %}
+											     <a class="cicon love" program-id="{{list.recommend_list.program_id }}" style="background-position:0px -130px"></a>
+                                             {% else %}
+                                                 <a class="cicon love" program-id="{{list.recommend_list.program_id }}" style="background-position:-28px -130px"></a>
+                                             {% endifequal %}
+											<a class="cicon more" style="display:none"></a>
+											<a class="cicon dele" style="display:none"></a>
+                                            <div class="star" program-id="{{list.recommend_list.program_id }}" scored="{{list.score }}"></div>
+
+										</div>
+									</div>
+								</li>
+
+                                {% endfor %}
+                            </ul>
+
+
+
+						</div>
+                    </div>
+               </div>
+
+
+
+
+
+
+
+
+
+
+
+
+              </aside>
+            <section class="col-sm-4 no-padder lt">
+                <section class="vbox">
+                  <section class="scrollable hover">
+                    <div class="m-t-n-xxs">
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                          <span class="block h3 font-bold text-info">Find</span>
+                          <span class="text-muted">Search the music you like</span>
+                          <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                        </a>
+                        <a href="#">
+                          <img class="img-full" src="/static/images/m40.jpg" alt="...">
+                        </a>
+                      </div>
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs text-right">
+                          <span class="block h3 font-bold text-warning text-u-c">Listen</span>
+                          <span class="text-muted">Find the peace in your heart</span>
+                          <span class="bottom wrapper-md block"><i class="icon-arrow-right i-lg pull-left"></i> -</span>
+                        </a>
+                        <a href="#">
+                          <img class="img-full" src="/static/images/m41.jpg" alt="...">
+                        </a>
+                      </div>
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                          <span class="block h3 font-bold text-success text-u-c">Share</span>
+                          <span class="text-muted">Share the good songs with your loves</span>
+                          <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                        </a>
+                        <a href="#">
+                          <img class="img-full" src="/static/images/m42.jpg" alt="...">
+                        </a>
+                      </div>
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs text-right">
+                          <span class="block h3 font-bold text-white text-u-c">2014</span>
+                          <span class="text-muted">Find, Listen & Share</span>
+                          <span class="bottom wrapper-md block"><i class="icon-arrow-right i-lg pull-left"></i> -</span>
+                        </a>
+                        <a href="#">
+                          <img class="img-full" src="/static/images/m44.jpg" alt="...">
+                        </a>
+                      </div>
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                          <span class="block h3 font-bold text-danger-lter text-u-c">Top10</span>
+                          <span class="text-muted">Selected songs</span>
+                          <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                        </a>
+                        <a href="#">
+                          <img class="img-full" src="/static/images/m45.jpg" alt="...">
+                        </a>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+
+  </section>
+
+    </section>
+     <footer class="footer bg-success dker">
+            <div id="jp_container_N">
+
+		<div class="bottom">
+			<div class="playerWrap">
+				<div class="playerCon">
+					<a href="#" class="pbtn prevBtn"></a>
+					<a href="#" class="pbtn playBtn" isplay="0"></a>
+					<a href="#" class="pbtn nextBtn"></a>
+					<a href="#" class="mode"></a>
+				</div>
+				<div class="playInfo">
+					<div class="trackInfo">
+						<a href="#" class="songName">漂洋过海来看你(Live)</a>
+
+						<i style="float: left;">-</i>
+                        <a href="#" class="endTime">00:00</a>
+						<a href="#" class="songPlayer">刘明湘</a>
+						<div class="trackCon">
+							<a href="#" class="tc1"></a>
+							<a href="#" class="tc2"></a>
+							<a href="#" class="tc3"></a>
+						</div>
+					</div>
+					<div class="playerLength">
+						<div class="position">00:00</div>
+						<div class="progress">
+							<div class="pro1"></div>
+							<div class="pro2">
+								<a href="#" class="dian"></a>
+							</div>
+						</div>
+						<div class="duration">03:35</div>
+					</div>
+				</div>
+				<div class="vol">
+					<a href="#" class="pinBtn"></a>
+					<div class="volm">
+						<div class="volSpeaker"></div>
+						<div class="volControl">
+							<a href="#" class="dian2"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  </div>
+          </footer>
+
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+{% endblock %}
+
+{% block script%}
+<script src="/static/js/jquery.raty.js"></script>
+
+{%endblock%}

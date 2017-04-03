@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>program search</title>
+		 <meta charset="utf-8">
+		
+       <script>
+		    //window.onload=function (){
+			//var button=document.getElementById("addButton");
+			//button.onlick=handleButtonClick;
+			//}
+		/////function handleButtonClick(){
+			//var key_words=document.getElementById("key_search").value;
+		//}
+           
+        </script>
+    </head>
+    <body>
+        <h1>电台节目查询系统</h1>
+		<div>
+			<form  action="/searchprogram/" method="get">
+			
+			关键字搜索：<input type="text" id="key_search" name="keySearch" value="搜索音乐，歌手等">
+			 <!--<input type="button" id="addButton" value="submit">-->
+			</form>
+		</div>
+		<div>
+			<a  href="#player">	音乐播放</a>
+		<object id="MediaPlayer" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" height="460" width="530">
+<param name="URL" value="http://101.201.81.34/nihao.mp3">
+<param name="rate" value="1">
+<param name="balance" value="0">
+<param name="defaultFrame" value="">
+<param name="playCount" value="1">
+<param name="autoStart" value="1">
+<param name="currentMarker" value="0">
+<param name="invokeURLs" value="-1">
+<param name="baseURL" value="">
+<param name="volume" value="50">
+<param name="mute" value="0">
+<param name="stretchToFit" value="1">
+<param name="windowlessVideo" value="0">
+<param name="enabled" value="-1">
+<param name="enableContextMenu" value="0">
+<param name="fullScreen" value="0">
+<param name="SAMIStyle" value="">
+<param name="SAMILang" value="">
+<param name="SAMIFilename" value="">
+<param name="captioningID" value="">-->
+<embed src="http://101.201.81.34/nihao.mp3" autostart="1" type="video/x-ms-wmv" width="530" height="460">
+</object>
+		</div>
+        <strong>{{ current_time }}</strong>
+    </body>
+</html>

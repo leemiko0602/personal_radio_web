@@ -1,0 +1,298 @@
+{% extends "home.html" %}
+
+{% block content %}
+    <section id="content">
+      <section class="vbox">
+            <section class="scrollable" id="main" style="height:680px">
+                <section class="hbox stretch">
+
+                    <aside class="aside-lg bg-light lter b-r">
+                        <section class="vbox">
+                            <section class="scrollable" id="pro_sec">
+                                <div class="wrapper">
+                                    <div class="text-center m-b m-t">
+                                        <a href="#" class="thumb-lg">
+                                            <img src="/static/images/logop.png" class="img-circle">
+                                        </a>
+                                        <div>
+                                            <div class="h3 m-t-xs m-b-xs" id="username">{{ uname}}</div>
+                                            <small class="text-muted"><i class="fa fa-map-marker"></i> Beijing, CN</small>
+                                        </div>
+                                    </div>
+                                    <div class="panel wrapper">
+                                        <div class="row text-center">
+                                            <div class="col-xs-6">
+
+                                                    <span class="m-b-xs h4 block" id="sum_programcollet"></span>
+                                                    <small class="text-muted">节目</small>
+
+                                            </div>
+                                            <div class="col-xs-6">
+
+                                                    <span class="m-b-xs h4 block" id="sum_stationcollect"></span>
+                                                    <small class="text-muted">电台</small>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <form action="/changepassword/">
+
+                                        <div class="btn-group btn-group-justified">
+                                            <a  class="btn btn-info"  >个人信息</a >
+                                            <a  class="btn btn-success" >修改密码</a>
+                                        </div>
+                                        <div>
+                                            <div style="display: block "  id="info">
+
+                                                {% if uname %}
+                                                    <div class="form-group"></div>
+
+                                                    <a  class="list-group-item">
+
+                                                        <span class="badge bg-danger">{{ uname }}</span>
+                                                        <i class="icon-user"></i> 用户名
+                                                    </a>
+                                                    <a  class="list-group-item">
+
+                                                        <span class="badge bg-in">{{ sex }}</span>
+                                                        <i class="icon-users"></i> 性别
+                                                    </a>
+                                                    <a  class="list-group-item">
+
+                                                        <span class="badge bg-success">{{ birth }}</span>
+                                                        <i class="icon-calendar"></i> 出生日期
+                                                    </a>
+                                                    <a  class="list-group-item">
+
+                                                        <span class="badge bg-dark">{{ occupation }}</span>
+                                                        <i class="icon-briefcase"></i>职业
+                                                    </a>
+                                                    </div>
+                                                {% else %}
+                                                    <div>
+                                                       您好，请 <a style="color: #108d4e" href="{% url 'log' %}">登录</a>
+                                                    </div>
+                                                {% endif %}
+                                        </div>
+                                        <div class="panel-body" style="display: none" id="change" >
+                                         <form id="">
+                                            <div class="form-group">
+                                                <label>初始密码</label>
+                                                <input type="password" class="form-control parsley-validated" data-required="true" id="org_pwd"  placeholder="初始密码">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>密码</label>
+                                                <input type="password" class="form-control parsley-validated"  data-required="true" placeholder="至少为八位" id="new_pwd">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>确认密码</label>
+                                                <input type="password" class="form-control parsley-validated"  data-required="true" placeholder="确认密码" id="conf_pwd">
+                                            </div>
+                                            <div class="form-group">
+                                            </div>
+                                            <footer class="panel-footer text-right bg-light lter">
+                                                <input type="button" value="修改" id="submit" class="btn btn-success btn-s-xs"/>
+                                            </footer>
+                                            <div class="text-right m-t m-b"><label style="color:#FF0000" id="error"></label></div>
+                                             </form>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </section>
+                        </section>
+                   </aside>
+                    <aside class="bg-white">
+                        <section class="vbox" >
+                            <header class="header bg-light lt">
+                                <ul class="nav nav-tabs nav-white">
+                                    <li class="active"><a data-toggle="tab" id="sec_1">节目收藏</a></li>
+                                    <li class=""><a data-toggle="tab"  id="sec_2">电台收藏</a></li>
+                                </ul>
+                            </header>
+                            {% if uname %}
+                             <section  class="scrollable" id="main_sec">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="activity">
+                                            <section class="scrollable">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="activity">
+                                                        <section class="panel panel-default" id="fir_sec" style="display: block">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped b-t b-light"  id="program_table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th style="width:20px;"><label class="checkbox m-n i-checks"><input type="checkbox" id="program_choose_all" ><i></i></label></th>
+                                                                        <th class="th-sortable active" data-toggle="class">节目</th>
+                                                                        <th class="th-sortable active" data-toggle="class">播放</th>
+                                                                        <th  class="th-sortable active"data-toggle="class" >删 除</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody id="program">
+
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <footer class="panel-footer">
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 hidden-xs">
+                                                                        <select class="input-sm form-control input-s-sm inline v-middle" id="selection_p">
+
+                                                                            <option value="1">删除</option>
+
+                                                                        </select>
+                                                                        <button class="btn btn-sm btn-default" onclick="program_multiselect_delete()">确认</button>
+                                                                    </div>
+                                                                    <div class="col-sm-4 text-center">
+                                                                        <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+                                                                    </div>
+                                                                    <div class="col-sm-4 text-right text-center-xs">
+                                                                        <ul class="pagination pagination-sm m-t-none m-b-none">
+                                                                            <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                                                            <li><a href="#">1</a></li>
+                                                                            <li><a href="#">2</a></li>
+                                                                            <li><a href="#">3</a></li>
+                                                                            <li><a href="#">4</a></li>
+                                                                            <li><a href="#">5</a></li>
+                                                                            <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </footer>
+                                                        </section >
+                                                    </div>
+                                                    <div class="tab-pane" id="events">
+                                                    </div>
+                                                    <div class="tab-pane" id="interaction">
+                                                        <div class="text-center wrapper">
+                                                            <i class="fa fa-spinner fa fa-spin fa fa-large"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            <section class="panel panel-default" id="seco_sec" style="display: none">
+
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped b-t b-light" id="station_table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="width:20px;"><label class="checkbox m-n i-checks"><input type="checkbox" id="station_choose_all"><i></i></label></th>
+                                                            <th class="th-sortable active" data-toggle="class">电台</th>
+                                                            <th  class="th-sortable active"data-toggle="class" >删 除</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="station">
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <footer class="panel-footer">
+                                                    <div class="row">
+                                                        <div class="col-sm-4 hidden-xs">
+                                                            <select class="input-sm form-control input-s-sm inline v-middle" id="selection_s">
+                                                                <option value="1" >删除</option>
+                                                            </select>
+                                                            <button class="btn btn-sm btn-default" onclick="staion_multiselect_delete()">确认</button>
+                                                        </div>
+                                                        <div class="col-sm-4 text-center">
+                                                            <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+                                                        </div>
+                                                        <div class="col-sm-4 text-right text-center-xs">
+                                                            <ul class="pagination pagination-sm m-t-none m-b-none">
+                                                                <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                                                <li><a href="#">1</a></li>
+                                                                <li><a href="#">2</a></li>
+                                                                <li><a href="#">3</a></li>
+                                                                <li><a href="#">4</a></li>
+                                                                <li><a href="#">5</a></li>
+                                                                <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </footer>
+                                            </section>
+                                        </div>
+                                        <div class="tab-pane" id="events">
+                                            <div class="text-center wrapper">
+                                                <i class="fa fa-spinner fa fa-spin fa fa-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="interaction">
+                                            <div class="text-center wrapper">
+                                                <i class="fa fa-spinner fa fa-spin fa fa-large"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+
+</section>
+</aside>
+</section>
+             </section>
+
+{# 播放模块 #}
+<audio  id="myAudio" src=""  class=""></audio>
+  {% if uname %}
+      <footer class="_footer bg-success dker" id="radioplay_block"  >
+       <div id="jp_container_N">
+      <div class="_bottom"  id="bottom">
+          <div class="_playerWrap" >
+              <div class="_playerCon">
+                  <a  class="_pbtn _prevBtn"  ></a>
+                  <a  class="_pbtn _playBtn"   id="btn_play"></a>
+                  <a class="_pbtn _nextBtn" ></a></div>
+                 <a  class="_mode"></a>
+
+              <div class="_playInfo">
+                  <div class="_trackInfo">
+                      <a class="_songName"></a>
+                      <a  class="_songPlayer">&nbsp;&nbsp;Mid Blue Radio</a>
+                      <div class="_trackCon">
+                          <a  class="_tc1" style="background-position: 0px -130px" ></a>
+                          <a  class="_tc2"></a>
+                          <a  class="_tc3"></a>
+                      </div>
+                  </div>
+                  <div class="_playerLength">
+                      <div class="_position">00:00</div>
+                      <div class="_progress">
+                          <div class="_pro1"></div>
+                          <div class="_pro2">
+                              <a  class="_dian"></a>
+                          </div>
+                      </div>
+                      <div class="_duration">00:00</div>
+                  </div>
+              </div>
+              <div class="_vol">
+                  <a  class="_pinBtn"></a>
+                  <div class="_volm">
+                      <div class="_volSpeaker"></div>
+                      <div class="_volControl">
+                          <a  class="_dian2"></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      </footer>
+{# 测试播放模块#}
+  {% endif %}
+        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+
+</section>
+    </section>
+{% endblock %}
+{% block script %}
+    <script src="/static/js/profile_alter.js"></script>
+    <link rel="stylesheet" href="/static/css/radioplay.css" />
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

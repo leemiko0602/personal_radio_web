@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block login %}
+<div class="bg-page-bar">
+                <div class="page-bar">
+          <div class="categories">
+        <span class="right"></span>
+
+        <ul style="margin: 15px 10px;font-size: 18px">
+
+            {% if uname %}
+                 <li style="display:inline" data-filter="all" class="listFilterPanel selected"><span class="right"><a href="#">{{ uname }}</a></span></li>
+                 <span>|</span>
+                 <li style="display:inline" data-filter="techno" class="listFilterPanel"><span class="right"><a href="{%url 'logout'  %}">退出</a></span></li>
+            {% else %}
+                 <li style="display:inline" data-filter="all" class="listFilterPanel selected"><span class="right"><a href="{%url 'log'  %}">登录</a></span></li>
+                 <span>|</span>
+                 <li style="display:inline" data-filter="techno" class="listFilterPanel"><span class="right"><a href="{%url 'register'  %}">马上注册</a></span></li>
+            {% endif %}
+
+
+
+
+
+        </ul>
+      </div>
+</div>
+</div>
+
+{% endblock %}
+{% block content %}
+   <section class="vbox">
+
+    </section>
+{% endblock %}
+   {% block footer %}
+{#    <hr>#}
+{#        {{current_time}}#}
+{#    <p>Thanks for visiting my site.</p>#}
+
+
+   {% endblock %}
+

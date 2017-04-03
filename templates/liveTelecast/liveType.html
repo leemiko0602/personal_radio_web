@@ -1,0 +1,42 @@
+{% extends "home.html" %}
+
+{% block content %}
+        <section class="vbox">
+        <section class="scrollable padder-lg">
+
+                <h2 class="font-thin m-b">类型导航</h2>
+                <div class="row row-sm">
+                        {%for type in liveType%}
+
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                    <div class="item">
+                                        <div class="pos-rlt">
+                                            <div class="item-overlay opacity r r-2x bg-black">
+                                                <div class="center text-center m-t-n">
+                                                    <a href="{% url 'displayRadio' %}?id={{  type.id }}"><i class="fa fa-play-circle i-2x"></i></a>
+                                                </div>
+                                            </div>
+                                            <a href="track-detail.html"><img src="/static/images/a{{ type.id }}.jpg" alt="" class="r r-2x img-full"></a>
+                                        </div>
+                                        <div class="padder-v">
+                                            <a href="{% url 'displayRadio' %}?id={{  type.id }}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis">{{type.name}}</a>
+                                            <a href="track-detail.html" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">Radio</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                        {%endfor%}
+
+
+                </div>
+
+
+         </section>
+        </section>
+
+
+
+
+{% endblock %}

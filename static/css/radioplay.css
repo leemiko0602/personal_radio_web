@@ -1,0 +1,35 @@
+
+
+/*底部按键*/
+._bottom{position: relative;left: 0;bottom: 0;width: 100%;height: 80px;background:url("../css/images/T10MNqFzVXXXcu5FDa-20-20.png") repeat;}
+._playerWrap{position: relative;height: 100%;padding-left: 278px;padding-right: 330px;}
+._playerCon{position: absolute;top: 0;left: 0;width: 278px;height: 100%;}
+._pbtn{display: block;width: 30px;height: 30px;position: absolute;background-image: url("../css/images/T1bMh.FxNXXXb_r3IF-72-730.png");}
+._prevBtn{top: 25px;left: 38px;background-position: 0 -90px;}
+._playBtn{top: 25px;left: 91px;}
+._nextBtn{background-position: 0 -60px;top:25px;left: 144px;}
+._mode{display: block;width:20px;height: 18px;position: absolute;top: 31px;left: 202px;background:url("../css/images/T1bMh.FxNXXXb_r3IF-72-730.png") 0 -181px; }
+._playInfo{height: 100%;position: relative;}
+._trackInfo{position: absolute;width: 100%;height:18px;line-height: 18px;top: 20px;color: #fff;}
+._trackInfo a{color: #fff;font-size: 14px;text-decoration: none;}
+._trackInfo a.songPlayer{margin-left: 30px;}
+._trackCon{float: right;width: 100px;height: 18px;}
+._tc1{width: 18px;height: 18px;display: block;position: absolute;top: 0;right: 66px;}
+._songName,._endTime,._songPlay{float: left;}
+._tc1{position: absolute;width: 18px;height: 18px;top: 0;right: 66px;background-image: url("../css/images/T1bMh.FxNXXXb_r3IF-72-730.png");background-position: 0 -241px;}
+._tc2{position: absolute;width: 18px;height: 18px;top: 0;right: 33px;background-image: url("../css/images/T1bMh.FxNXXXb_r3IF-72-730.png");background-position: 0 -259px;}
+._tc3{position: absolute;width: 18px;height: 18px;top: 0;right: 0;background-image: url("../css/images/T1bMh.FxNXXXb_r3IF-72-730.png");background-position: 0 -277px;}
+._playerLength{width: 100%;height: 20px;font-size: 10px;position: absolute;top: 43px;}
+._position{width: 60px;height: 18px;line-height: 18px;position: absolute;left:0;color: #fff;opacity: 0.3}
+._duration{width: 60px;height: 18px;line-height: 18px;position: absolute;right:0;color: #fff;opacity: 0.3;text-align: right;}
+._progress{position: absolute;left: 60px;right: 60px;height: 18px;background-color: #0B6236;}
+._pro1,._pro2{position: absolute;left: 0;height: 100%;width: 100%;background: url("../css/images/pro.png") repeat-x 0 50%;}
+._dian,._dian2{display: block;width: 10px;height: 18px;position: absolute;top: 0;background: url("../css/images/T1bMh.FxNXXXb_r3IF-72-730.png") no-repeat -32px -338px;}
+._dian2{left: 79px;}
+._vol{position: absolute;top: 0;right: 0;width:270px;height: 100%;}
+._pinBtn{display: block;position: absolute;top: 28px;right: 176px;width: 80px;height: 32px;background: url("../css/images/T1ldFHFpxtXXaLghZR-80-832.png") no-repeat;}
+._volm{position: absolute;width: 110px;height: 18px;top: 31px;right:40px;}
+._volSpeaker{position: absolute;width: 18px;height: 18px;background: url("../css/images/T1bMh.FxNXXXb_r3IF-72-730.png") no-repeat 0 -295px;}
+._volControl{position: absolute;left:24px;width: 80px;height: 18px;background: url("../css/images/pro.png") repeat-x 0 50%;}
+._radioplay{background:url("../css/images/T1X4JEFq8qXXXaYEA_-11-12.gif") no-repeat}
+._footer{position:fixed;_position:relative;bottom:0px;}

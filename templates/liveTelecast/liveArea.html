@@ -1,0 +1,45 @@
+{% extends "home.html" %}
+
+{% block content %}
+        <section class="vbox">
+        <section class="scrollable padder-lg">
+
+                <h2 class="font-thin m-b">地区导航</h2>
+                <div class="row row-sm">
+                        {%for area in liveAreas%}
+
+
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                                    <div class="item">
+                                        <div class="pos-rlt">
+                                            <div class="item-overlay opacity r r-2x bg-black">
+                                                <div class="center text-center m-t-n">
+                                                    <a href="{% url 'displayRadio' %}?id={{ area.id }}"><i class="fa fa-play-circle i-2x"></i></a>
+                                                </div>
+                                            </div>
+                                            <a href="#"><img src="/static/images/d{{ area.id }}.jpg" alt="" class="r r-2x img-full"></a>
+                                        </div>
+                                        <div class="padder-v">
+                                            <a href="{% url 'displayRadio' %}?id={{ area.id }}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis">{{area.name}}</a>
+                                            <a href="track-detail.html" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">Radio</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+{#                                    <a href="{% url 'displayRadio' %}?id={{ area.id }}"> {{area.name}}</a>#}
+
+
+                        {%endfor%}
+
+
+                </div>
+
+
+         </section>
+        </section>
+
+
+
+
+{% endblock %}
